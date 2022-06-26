@@ -1,37 +1,32 @@
 ﻿@page "/"
-@using LocalStorageManager
+@using WebStorageManagement.Models
 @using Microsoft.AspNetCore.Components
-@using SessionStorageManager
-@using StorageManager_site.Shared
-@using System.Globalization
-@using Microsoft.Extensions.FileProviders
-@inject ILocalStorageService localStorage
-@inject ISessionStorageService sessionStorage
+@inject IWebStorageService webStorage
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Local storage</h1>
+<div style="padding: 15px; margin-bottom: 30px; border: 1px solid black;">
+    <EditForm Model=@LocalValueToWrite OnSubmit="@Submit">
+        <input type="text" placeholder="Enter the Key" @bind="LocalValueToWrite!.MyKey" />
+        <input type="text" placeholder="Enter the Value to store" @bind="LocalValueToWrite.MyValue" />
+        <div>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+            <button class="btn btn-primary" @onclick="ReadLocalStorage">READ Local Storage value</button>
+            <button class="btn btn-secondary" @onclick="ClearLocalStorage">Clear Local Storage</button>
+        </div>
+    </EditForm>
+</div>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<button @onclick="SaveLocalStorage">SAVE</button>
-<button @onclick="ReadLocalStorage">READ</button>
-<button @onclick="DeleteLocalStorage">DELETE</button>
-
-<EditForm Model=@LocalValueToWrite OnSubmit="@Submit">
-    <input type="text" placeholder="Enter the Key" @bind="LocalValueToWrite!.MyKey" />
-    <input type="text" placeholder="Enter the Value to store" @bind="LocalValueToWrite.MyValue" />
-    <input type="submit" value="Submit" class="btn btn-primary" />
-</EditForm>
-
-<button @onclick="SaveSessionStorage">SAVE</button>
-<button @onclick="ReadSessionStorage">READ</button>
-<button @onclick="DeleteSessionStorage">DELETE</button>
-
-<EditForm Model=@SessionValueToWrite OnSubmit="@SubmitSession">
-    <input type="text" placeholder="Enter the Key" @bind="SessionValueToWrite!.MyKey" />
-    <input type="text" placeholder="Enter the Value to store" @bind="SessionValueToWrite.MyValue" />
-    <input type="submit" value="Submit" class="btn btn-primary" />
-</EditForm>
+<h1>Session storage</h1>
+<div style="padding: 15px; margin-bottom: 30px; border: 1px solid black;">
+    <EditForm Model=@SessionValueToWrite OnSubmit="@SubmitSession">
+        <input type="text" placeholder="Enter the Key" @bind="SessionValueToWrite!.MyKey" />
+        <input type="text" placeholder="Enter the Value to store" @bind="SessionValueToWrite.MyValue" />
+        <div>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+            <button class="btn btn-primary" @onclick="ReadSessionStorage">READ Session Storage Value</button>
+            <button class="btn btn-secondary" @onclick="ClearSessionStorage">Clear Session storage</button>
+        </div>
+    </EditForm>
+</div>

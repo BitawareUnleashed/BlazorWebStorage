@@ -13,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LocalStorageManager\LocalStorageManager.csproj" />
-    <ProjectReference Include="..\..\SessionStorageManager\SessionStorageManager.csproj" />
+    <ProjectReference Include="..\..\WebStorageManagement\WebStorageManagement.csproj" />
     <ProjectReference Include="..\Shared\StorageManager_site.Shared.csproj" />
   </ItemGroup>
 
